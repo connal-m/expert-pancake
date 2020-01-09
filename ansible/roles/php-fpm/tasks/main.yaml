@@ -1,0 +1,16 @@
+---
+- name: Install php-fpm
+  yum:
+    name: ['php', 'php-fpm', 'php-enchant', 'php-IDNA_Convert', 'php-mbstring', 'php-mysqlnd', 'php-process', 'php-simplepie', 'php-xml']
+    state: latest
+
+- name: Disable default pool
+  command: mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.disabled creates=/etc/php-fpm.d/www.disabled
+
+- name: Copy php-fpm configuration
+  copy: src=wordpress.conf dest=/etc/php-fpm.d/
+
+- name: Setup php-fpm for supervisord
+  lineinfile: destfile=/etc/php-fpm.conf
+              regexp='daemonize'
+              line='daemonize = no'

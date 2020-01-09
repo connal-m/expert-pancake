@@ -1,0 +1,4 @@
+---
+- name: Copy repo defs
+  copy: src=repos.repo dest=/etc/yum.repos.d/
+  

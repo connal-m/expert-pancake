@@ -1,0 +1,8 @@
+---
+- name: Install supervisord
+  yum:
+    name: supervisor
+    state: latest
+
+- name: Copy Config
+  copy: src=supervisord.conf dest=/etc/

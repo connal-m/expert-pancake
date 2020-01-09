@@ -1,0 +1,35 @@
+{
+  "variables": {
+    "playbook_dir": "./ansible/playbook.yaml",
+    "aws_ecr_repository": "976352044022.dkr.ecr.us-west-2.amazonaws.com/expert-pancake",
+    "aws_ecr_image_tag": "v1.0.0"
+  },
+  "builders": [{
+    "type": "docker",
+    "image": "centos:7",
+    "commit": true,
+    "privileged": true,
+    "changes": [
+      "CMD [\"/usr/bin/supervisord\"]"
+    ]
+  }],
+  "provisioners": [{
+    "type": "ansible",
+    "playbook_file": "{{user `playbook_dir`}}"
+  }],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{user `aws_ecr_repository`}}",
+        "tag": "{{user `aws_ecr_image_tag`}}"
+      },
+      {
+        "type": "docker-push",
+        "ecr_login": true,
+        "aws_profile": "expert-pancake",
+        "login_server": "{{user `aws_ecr_repository`}}"
+      }
+    ]
+  ]
+}
