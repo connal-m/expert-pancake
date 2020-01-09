@@ -1,0 +1,27 @@
+
+[epel]
+name=Extra Packages fro Enterprise Linux 7 - $basearch
+baseurl=http://download.fedoraproject.org/pub/epel/7/$basearch
+enabled=1
+gpgcheck=0
+
+[nginx]
+name=Nginx repo - $basearch
+baseurl=http://nginx.org/packages/centos/7/$basearch
+enabled=1
+gpgcheck=0
+
+[remi-php56]
+name=Remi's PHP 5.6 RPM repository for Enterprise Linux 7 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/php56/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/7/php56/mirror
+# NOTICE: common dependencies are in "remi-safe"
+enabled=1
+gpgcheck=0
+
+[remi-safe]
+name=Remi's PHP safe repository for Enterprise Linux 7 - $basearch
+#baseurl=http://rpms.remirepo.net/enterprise/7/safe/$basearch/
+mirrorlist=http://rpms.remirepo.net/enterprise/7/safe/mirror
+enabled=1
+gpgcheck=0

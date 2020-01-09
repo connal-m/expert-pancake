@@ -1,0 +1,11 @@
+---
+- name: Install Nginx, Wordpress, PHP-FPM, Supervisord
+  hosts: all
+  remote_user: root
+
+  roles:
+    - repos
+    - nginx
+    - php-fpm
+    - wordpress
+    - supervisord

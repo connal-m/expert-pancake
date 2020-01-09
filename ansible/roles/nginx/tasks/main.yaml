@@ -1,0 +1,15 @@
+---
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: latest
+
+- name: Nginx for wordpress config
+  template: src=default.conf dest=/etc/nginx/conf.d/
+
+- name: Setup Nginx for supervisord
+  lineinfile:
+    destfile: /etc/nginx/nginx.conf
+    regexp: 'daemon;'
+    insertafter: 'user nginx;'
+    line: 'daemon off;'

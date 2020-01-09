@@ -1,0 +1,9 @@
+---
+
+wp_db_name: wordpress
+wp_db_user: foo
+wp_db_password: foobarbaz
+wp_db_host: terraform-20200109184932967900000001.cgfakw3u7s5w.us-west-2.rds.amazonaws.com
+
+nginx_port: 8080
+server_hostname: server.yourdomain.com
